@@ -8,6 +8,8 @@ public class RubyController : MonoBehaviour
 
 
     public int maxHealth = 5;
+   
+    public int health { get { return currentHealth; } }
     int currentHealth;
 
 
@@ -24,14 +26,14 @@ public class RubyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
     }
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
-        position.x = position.x + 3.0f * horizontal * Time.deltaTime;
-        position.y = position.y + 3.0f * vertical * Time.deltaTime;
+        position.x = position.x + speed * horizontal * Time.deltaTime;
+        position.y = position.y + speed * vertical * Time.deltaTime;
         rigidbody2d.MovePosition(position);
     }
     
